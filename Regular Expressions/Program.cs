@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Regular_Expressions
@@ -7,31 +8,34 @@ namespace Regular_Expressions
     {
         static void Main(string[] args)
         {
-            // Массив тестируемых строк
-            string[] test = [
-            "This is .NET World", "Hello world", "My wonderful world"
-        ];
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
 
-            // Проверим, содержится ли в исходных строках слово World
-            // при этом мы не укажем опции RegexOption
+            // Масив тестових рядків
+            string[] test = [
+                "This is .NET World", "Hello world", "My wonderful world"
+            ];
+
+            // Перевіримо, чи міститься у вихідних рядках слово World
+            // при цьому ми не вкажемо параметри RegexOptions
             Regex regex = new Regex("World");
 
-            Console.WriteLine("Регистрозависимый поиск: ");
+            Console.WriteLine("Пошук з урахуванням регістру: ");
             foreach (string str in test)
             {
                 if (regex.IsMatch(str))
-                    Console.WriteLine("В исходной строке: \"{0}\" есть совпадения!", str);
+                    Console.WriteLine("У вихідному рядку: \"{0}\" є співпадіння!", str);
             }
             Console.WriteLine();
 
-            // Теперь укажем поиск, не зависимый от регистра
+            // Тепер вкажемо пошук без урахування регістру
             regex = new Regex("World", RegexOptions.IgnoreCase);
 
-            Console.WriteLine("Регистронезависимый поиск: ");
+            Console.WriteLine("Пошук без урахування регістру: ");
             foreach (string str in test)
             {
                 if (regex.IsMatch(str))
-                    Console.WriteLine("В исходной строке: \"{0}\" есть совпадения!", str);
+                    Console.WriteLine("У вихідному рядку: \"{0}\" є співпадіння!", str);
             }
         }
     }

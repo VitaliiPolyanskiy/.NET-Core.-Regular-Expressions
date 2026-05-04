@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Regular_Expressions
@@ -7,63 +8,66 @@ namespace Regular_Expressions
     {
         static void Main(string[] args)
         {
-            string input = "AlexandrAlexey Alex Alexandra"; 
-            Console.WriteLine("Исходная строка:\n{0}", input);
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
+
+            string input = "AlexandrAlexey Alex Alexandra";
+            Console.WriteLine("Вихідний рядок:\n{0}", input);
             string pattern = @"\bAlex\B";
             string replacement = "Саша";
             input = Regex.Replace(input, pattern, replacement);
-            Console.WriteLine("\nВидоизмененная строка: \n" + input);
+            Console.WriteLine("\nЗмінений рядок: \n" + input);
 
-            input = "один два три четыре пять шесть";
-            Console.WriteLine("\nИсходная строка:\n{0}", input);
-            // В шаблоне используются 5 групп
+            input = "один два три чотири п’ять шість";
+            Console.WriteLine("\nВихідний рядок:\n{0}", input);
+            // У шаблоні використовується 5 груп
             pattern = @"\b(\w+)(\s)(\w+)(\s)(\w+)\b";
             replacement = "$5$4$3$2$1";
-            // исходная строка заменяется на 5 групп
+            // вихідний рядок замінюється на 5 груп
             input = Regex.Replace(input, pattern, replacement);
-            Console.WriteLine("\nВидоизмененная строка: \n" + input);
+            Console.WriteLine("\nЗмінений рядок: \n" + input);
 
             input = "1000000 USD";
-            Console.WriteLine("\nИсходная строка:\n{0}", input);
+            Console.WriteLine("\nВихідний рядок:\n{0}", input);
             pattern = @"\b(\d+)\s?USD";
-            replacement = "$$$1";    // $$ - подставляет литерал "$"
-            // исходная строка заменяется на 1 группу
+            replacement = "$$$1";    // $$ - підставляє літерал "$"
+            // вихідний рядок замінюється на 1 групу
             input = Regex.Replace(input, pattern, replacement);
-            Console.WriteLine("\nВидоизмененная строка: \n" + input);
+            Console.WriteLine("\nЗмінений рядок: \n" + input);
 
             input = "AABBCCDD";
-            Console.WriteLine("\nИсходная строка:\n{0}", input);
+            Console.WriteLine("\nВихідний рядок:\n{0}", input);
             pattern = "C+";
             replacement = "$`";
-            // найденный фрагмент текста заменяется на подстроку 
-            // входной строки до соответствия шаблона поиска
+            // знайдений фрагмент тексту замінюється на підрядок
+            // вхідного рядка до відповідності шаблону пошуку
             input = Regex.Replace(input, pattern, replacement);
-            Console.WriteLine("\nВидоизмененная строка: \n" + input);
+            Console.WriteLine("\nЗмінений рядок: \n" + input);
 
             input = "AABBCCDD";
-            Console.WriteLine("\nИсходная строка:\n{0}", input);
+            Console.WriteLine("\nВихідний рядок:\n{0}", input);
             pattern = "C+";
             replacement = "$'";
-            // найденный фрагмент текста заменяется на подстроку 
-            // входной строки после соответствия шаблона поиска
+            // знайдений фрагмент тексту замінюється на підрядок
+            // вхідного рядка після відповідності шаблону пошуку
             input = Regex.Replace(input, pattern, replacement);
-            Console.WriteLine("\nВидоизмененная строка: \n" + input);
+            Console.WriteLine("\nЗмінений рядок: \n" + input);
 
             input = "AABBCCDDEE";
-            Console.WriteLine("\nИсходная строка:\n{0}", input);
+            Console.WriteLine("\nВихідний рядок:\n{0}", input);
             pattern = "(A+)(B+)(C+)";
             replacement = "$+";
-            // найденный фрагмент текста заменяется на последнюю захваченную группу
+            // знайдений фрагмент тексту замінюється на останню захоплену групу
             input = Regex.Replace(input, pattern, replacement);
-            Console.WriteLine("\nВидоизмененная строка: \n" + input);
+            Console.WriteLine("\nЗмінений рядок: \n" + input);
 
             input = "AABBCC";
-            Console.WriteLine("\nИсходная строка:\n{0}", input);
+            Console.WriteLine("\nВихідний рядок:\n{0}", input);
             pattern = "B";
             replacement = "$_";
-            // входная строка заменяет все соответствия шаблона поиска
+            // вхідний рядок замінює всі відповідності шаблону пошуку
             input = Regex.Replace(input, pattern, replacement);
-            Console.WriteLine("\nВидоизмененная строка: \n" + input);
+            Console.WriteLine("\nЗмінений рядок: \n" + input);
         }
     }
 }

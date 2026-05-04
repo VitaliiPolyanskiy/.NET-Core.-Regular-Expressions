@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Regular_Expressions
@@ -7,18 +8,21 @@ namespace Regular_Expressions
     {
         static void Main(string[] args)
         {
-            string myText = @"Сериализация представляет собой процесс сохранения объекта на диске. 
-В другой части приложения или даже в совершенно отдельном приложении может производиться
-десериализация объекта, возвращающая его в состояние, в котором он пребывал до сериализации.";
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
 
-            string myReg = "Сериал";
+            string myText = @"Серіалізація — це процес збереження об'єкта на диску. 
+В іншій частині застосунку або навіть у зовсім окремому застосунку може виконуватися
+десеріалізація об'єкта, яка повертає його у стан, в якому він перебував до серіалізації.";
+
+            string myReg = "Серіал";
             MatchCollection myMatch = Regex.Matches(myText, myReg, RegexOptions.IgnoreCase);
 
-            Console.WriteLine("Все вхождения строки \"{0}\" в исходной строке: ", myReg);
+            Console.WriteLine("Усі входження рядка \"{0}\" у вихідному рядку: ", myReg);
             foreach (Match i in myMatch)
                 Console.Write("\t" + i.Index);
 
-            myReg = @"\b[с,д]\w*ериализац\w*";
+            myReg = @"\b[с,д]\w*еріалізаці\w*";
             MatchCollection match = Regex.Matches(myText, myReg, RegexOptions.IgnoreCase);
             Console.WriteLine("\n");
             FindMyText(myText, match);
@@ -28,7 +32,7 @@ namespace Regular_Expressions
 
         static void FindMyText(string text, MatchCollection myMatch)
         {
-            // Реализуем выделение ключевых слов в консоли другим цветом
+            // Реалізуємо виділення ключових слів у консолі іншим кольором
             for (int i = 0; i < text.Length; i++)
             {
                 foreach (Match m in myMatch)
@@ -47,7 +51,6 @@ namespace Regular_Expressions
                 }
                 Console.Write(text[i]);
             }
-
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Regular_Expressions
@@ -7,19 +8,23 @@ namespace Regular_Expressions
     {
         static void Main(string[] args)
         {
-            // В исходной строке нужно найти все числа,
-            // соответствующие годам выпуска языков программирования
-            string input = "Выпуск первой официальной версии: " +
-                "Язык программирования C++ - 1985 год. " +
-                "Язык программирования Java - 1995 год. " +
-                "Язык программирования C# - 2002 год. ";
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
 
-            string pattern = @"(\d+)\s?год";
+            // У вихідному рядку потрібно знайти всі числа,
+            // що відповідають рокам випуску мов програмування
+            string input = "Випуск першої офіційної версії: " +
+                "Мова програмування C++ - 1985 рік. " +
+                "Мова програмування Java - 1995 рік. " +
+                "Мова програмування C# - 2002 рік. ";
+
+            string pattern = @"(\d+)\s?рік";
             Regex regex = new Regex(pattern);
 
-            // Достигаем того же результата что и в предыдущем примере, 
-            // используя метод Regex.Matches(), возвращающий MatchCollection
+            // Досягаємо того ж результату, що й у попередньому прикладі,
+            // використовуючи метод Regex.Matches(), який повертає MatchCollection
             MatchCollection mc = regex.Matches(input);
+
             foreach (Match match in mc)
             {
                 Console.WriteLine(match.Groups[1].Value);

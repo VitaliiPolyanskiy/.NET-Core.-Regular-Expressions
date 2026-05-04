@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Regular_Expressions
@@ -7,15 +8,18 @@ namespace Regular_Expressions
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите число: ");
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.UTF8;
+
+            Console.WriteLine("Введіть число: ");
             string Input = Console.ReadLine();
             string pattern = @"^(-|\+)?\d+(\.\d+)?$";
             Regex regex = new Regex(pattern);
 
             if (!regex.IsMatch(Input))
-                Console.WriteLine("Некорректный ввод!");
+                Console.WriteLine("Некоректне введення!");
             else
-                Console.WriteLine("Число введено правильно!");
+                Console.WriteLine("Число введене правильно!");
         }
     }
 }
