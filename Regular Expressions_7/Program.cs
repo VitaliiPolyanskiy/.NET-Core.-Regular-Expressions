@@ -18,7 +18,7 @@ namespace Regular_Expressions
             input = Regex.Replace(input, pattern, replacement);
             Console.WriteLine("\nЗмінений рядок: \n" + input);
 
-            input = "один два три чотири п’ять шість";
+            input = "один два три чотири пять шість";
             Console.WriteLine("\nВихідний рядок:\n{0}", input);
             // У шаблоні використовується 5 груп
             pattern = @"\b(\w+)(\s)(\w+)(\s)(\w+)\b";
